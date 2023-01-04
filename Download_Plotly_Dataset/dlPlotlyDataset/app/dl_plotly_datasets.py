@@ -38,7 +38,7 @@ drop_down_div = html.Div([
 # Change the style of the export button
 # https://community.plotly.com/t/styling-the-export-button-in-datatable/38798/9
 export_button = html.Button(
-    'CSV Dwonload', 
+    'CSV Download', 
     id='export_table',
     style={'backgroundColor': 'paleturquoise','margin-top': '10px'}, 
     **{'data-text': ''}

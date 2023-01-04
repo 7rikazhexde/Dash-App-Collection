@@ -26,7 +26,7 @@ title_div = html.Div(html.H3('Download Plotly Dataset'))
 
 # Dropdown
 drop_down_div = html.Div([
-    html.Div('Dateset Name:',style={'font-weight': 'bold'}),
+    html.Div('Select Dataset:',style={'font-weight': 'bold'}),
     dcc.Dropdown(
         id='drop_down_div',
         options=[{'label': x, 'value': x} for x in table_name_list],
@@ -82,20 +82,26 @@ app.layout = html.Div(
         Output('data_table', 'data'),
         Output('data_table', 'columns'),
         Output('data_table', 'page_size'),
+        Output('data_table','page_current'),
         Output('table_div', 'style'),
         Input('drop_down_div', 'value')
         )
 def update_table(value):
     if value in table_name_list:
+        # copy filename
         filename = value.replace('.csv', '')
         pyperclip.copy(filename)
+        # Replace spaces with %20
+        if ' ' in value:
+            value = value.replace(' ', '%20')
         data_url = 'https://raw.githubusercontent.com/plotly/datasets/master/' + value
         df = pd.read_csv(data_url)
         df_manage.df_data = df
         data = df.to_dict('records')
         columns = [{'name': str(i), 'id': str(i),'deletable': False,'renamable': False} for i in df.columns]
         page_size = ROW_PER_PAGE
-        return data, columns, page_size,{'display':'inline'}
+        page_current = 0
+        return data, columns, page_size, page_current, {'display':'inline'}
     # https://dash.plotly.com/advanced-callbacks
     # https://community.plotly.com/t/expected-the-output-type-to-be-a-list-or-tuple-but-got-none/50634
     raise PreventUpdate

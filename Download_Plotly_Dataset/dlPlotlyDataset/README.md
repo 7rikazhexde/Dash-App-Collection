@@ -39,6 +39,7 @@ This program uses the ```pyperclip``` module to copy the file name selected by `
 If the file is saved with the selected file name, paste it.
 
 ## Note
+* There is a bug in this program that if you select a file from Dropdown with data selected and update the data, the updated data will not be displayed. This is because it refers to the information in the cell before the change. If you want to view the data, please switch to a different vage, select Dropdown, and then select the cell.
 * If you get an interpreter error using vscode, open and start dlPlotlyDataset with the folder designation.
 * Dataset information may differ from the latest information.   
 If the expected dataset does not exist, please add it. See the comments in ```plotly_datasets_info.py``` for details.

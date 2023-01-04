@@ -83,6 +83,8 @@ app.layout = html.Div(
         Output('data_table', 'columns'),
         Output('data_table', 'page_size'),
         Output('data_table','page_current'),
+        Output("data_table", "selected_cells"),
+        Output("data_table", "active_cell"),
         Output('table_div', 'style'),
         Input('drop_down_div', 'value')
         )
@@ -101,7 +103,9 @@ def update_table(value):
         columns = [{'name': str(i), 'id': str(i),'deletable': False,'renamable': False} for i in df.columns]
         page_size = ROW_PER_PAGE
         page_current = 0
-        return data, columns, page_size, page_current, {'display':'inline'}
+        selected_cells = []
+        active_cell = None
+        return data, columns, page_size, page_current, selected_cells, active_cell, {'display':'inline'}
     # https://dash.plotly.com/advanced-callbacks
     # https://community.plotly.com/t/expected-the-output-type-to-be-a-list-or-tuple-but-got-none/50634
     raise PreventUpdate
@@ -123,7 +127,7 @@ app.clientside_callback(
 
 # Callback to get active_cell
 @app.callback(
-    Output('data_table_out', 'children'), 
+    Output('data_table_out', 'children'),
     Input('data_table', 'active_cell'),
     Input('data_table', 'page_current')
     )

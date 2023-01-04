@@ -1,6 +1,9 @@
 # Download_Plotly_Dataset
 This application selects [plotly / datasets](https://github.com/plotly/datasets) from the Dropdown component and displays it in the DataTable component.The displayed Dataset (DataFrame object) is saved as a csv file by executing the Button component.
 
+## Demo
+![Download_Plotly_Dataset_Demo](https://user-images.githubusercontent.com/33836132/210512054-46cc1980-a106-4362-a466-aec2e5753e29.gif)
+
 ## Usage
 1. Get project
 ```
@@ -20,6 +23,7 @@ This application selects [plotly / datasets](https://github.com/plotly/datasets)
 4. Application Launch
 
 Please access the URL displayed.
+
 ```
 Dash is running on http://127.0.0.1:8050/
 

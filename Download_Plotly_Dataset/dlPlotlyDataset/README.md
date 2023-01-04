@@ -31,9 +31,16 @@ Dash is running on http://127.0.0.1:8050/
  * Debug mode: on
 ```
 
-If you get an interpreter error using vscode, open and start dlPlotlyDataset with the folder designation.
+5. CSV Download
+
+If you want to download the CSV file, you can do so by executing the "CSV Download" button.  
+However, the file name is fixed to ```Data.csv``` due to the specification of ```dash_table.DataTable```.  
+This program uses the ```pyperclip``` module to copy the file name selected by ```Dropdown``` to the clipboard.  
+If the file is saved with the selected file name, paste it.
 
 ## Note
-* Dataset information may differ from the latest information. If the expected dataset does not exist, please add it. See the comments in plotly_datasets_info.py for details.
-* An error may occur when drawing the layout.
+* If you get an interpreter error using vscode, open and start dlPlotlyDataset with the folder designation.
+* Dataset information may differ from the latest information.   
+If the expected dataset does not exist, please add it. See the comments in ```plotly_datasets_info.py``` for details.
+* An error may occur when drawing the layout.  
 If you cannot start with the error, please reload your browser.

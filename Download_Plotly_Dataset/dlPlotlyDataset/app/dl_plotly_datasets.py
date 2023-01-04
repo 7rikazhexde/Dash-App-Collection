@@ -48,21 +48,24 @@ export_button = html.Button(
 table_out_div = html.Div(id='data_table_out',style={'margin-bottom': '10px'})
 
 # DataTable
+dash_data_table = dash_table.DataTable(
+    id='data_table',
+    columns=[{'name': i, 'id': i} for i in df_base.columns],
+    data=df_base.to_dict('records'),
+    style_cell=dict(textAlign='left'),
+    style_header=dict(backgroundColor='paleturquoise',textAlign='center'),
+    style_data=dict(backgroundColor='lavender'),
+    sort_action='none',
+    export_format='csv',
+    page_size = 10,
+    style_table={'height':'300px','overflowY':'auto'}
+)
+
+# DataTable Layout Definition
 table_div = html.Div(
     [
-    dash_table.DataTable(
-        id='data_table',
-        columns=[{'name': i, 'id': i} for i in df_base.columns],
-        data=df_base.to_dict('records'),
-        style_cell=dict(textAlign='left'),
-        style_header=dict(backgroundColor='paleturquoise',textAlign='center'),
-        style_data=dict(backgroundColor='lavender'),
-        sort_action='none',
-        export_format='csv',
-        page_size = 10,
-        style_table={'height':'300px','overflowY':'auto'}
-    ),
-    export_button
+        dash_data_table,
+        export_button
     ],
     id='table_div',style={'display':'none'}
 )
@@ -77,14 +80,14 @@ app.layout = html.Div(
     ]
 )
 
-# Callback to update table
+# Callback function to update and display data_table triggered by Dropdown
 @app.callback(
         Output('data_table', 'data'),
         Output('data_table', 'columns'),
         Output('data_table', 'page_size'),
-        Output('data_table','page_current'),
-        Output("data_table", "selected_cells"),
-        Output("data_table", "active_cell"),
+        Output('data_table', 'page_current'),
+        Output('data_table', 'selected_cells'),
+        Output('data_table', 'active_cell'),
         Output('table_div', 'style'),
         Input('drop_down_div', 'value')
         )
@@ -125,7 +128,7 @@ app.clientside_callback(
     Input('export_table', 'n_clicks')
 )
 
-# Callback to get active_cell
+# Callback function to update data_table_out triggered by cell selection and page switching
 @app.callback(
     Output('data_table_out', 'children'),
     Input('data_table', 'active_cell'),

@@ -29,6 +29,9 @@ Dash is running on http://127.0.0.1:8050/
 
 If you get an interpreter error using vscode, open and start dlPlotlyDataset with the folder designation.
 
+## Demo
+![Download_Plotly_Dataset_Demo](https://user-images.githubusercontent.com/33836132/210507530-b11073ea-5308-40b2-9209-c2063108ca81.gif)
+
 ## Note
 * Dataset information may differ from the latest information. If the expected dataset does not exist, please add it. See the comments in plotly_datasets_info.py for details.
 * An error may occur when drawing the layout.

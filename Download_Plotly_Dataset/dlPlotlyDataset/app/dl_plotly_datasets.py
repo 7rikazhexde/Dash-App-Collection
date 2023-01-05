@@ -29,7 +29,7 @@ drop_down_div = html.Div([
     html.Div('Select Dataset:',style={'font-weight': 'bold'}),
     dcc.Dropdown(
         id='drop_down_div',
-        options=[{'label': x, 'value': x} for x in table_name_list],
+        options=[dict(label=x,value=x) for x in table_name_list],
         value=None,
         style={'margin-top': '10px','margin-bottom': '10px','width': '500px'}
     )
@@ -50,15 +50,24 @@ table_out_div = html.Div(id='data_table_out',style={'margin-bottom': '10px'})
 # DataTable
 dash_data_table = dash_table.DataTable(
     id='data_table',
-    columns=[{'name': i, 'id': i} for i in df_base.columns],
+    columns=[dict(name=str(i),id=str(i)) for i in df_base.columns],
     data=df_base.to_dict('records'),
-    style_cell=dict(textAlign='left'),
+    fixed_rows=dict(headers=True,data=0),
+    # all three widths are needed
+    style_cell=dict(
+        textAlign='left',
+        minWidth='50px',
+        width='100px',
+        maxWidth='200px',
+        overflow='hidden',
+        textOverflow='ellipsis',
+    ),
     style_header=dict(backgroundColor='paleturquoise',textAlign='center'),
     style_data=dict(backgroundColor='lavender'),
     sort_action='none',
     export_format='csv',
     page_size = 10,
-    style_table={'height':'300px','overflowY':'auto'}
+    style_table=dict(height='375px',overflowY='auto')
 )
 
 # DataTable Layout Definition
@@ -103,7 +112,7 @@ def update_table(value):
         df = pd.read_csv(data_url)
         df_manage.df_data = df
         data = df.to_dict('records')
-        columns = [{'name': str(i), 'id': str(i),'deletable': False,'renamable': False} for i in df.columns]
+        columns = [dict(name=str(i),id=str(i),deletable=False,renamable=False) for i in df.columns]
         page_size = ROW_PER_PAGE
         page_current = 0
         selected_cells = []

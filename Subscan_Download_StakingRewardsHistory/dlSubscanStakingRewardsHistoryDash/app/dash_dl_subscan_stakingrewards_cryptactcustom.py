@@ -384,4 +384,4 @@ def is_error_check(response_code,response_status_code,list_num):
     return result, text
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run(debug=True)

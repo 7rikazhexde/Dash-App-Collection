@@ -16,6 +16,14 @@ Save data in the following formats as csv files using Dash, Ploly, and Subscan A
   If other networks are specified, the data cannot be acquired correctly and an error will result. 
   (reference:[API Endpoints](https://support.subscan.io/#api-endpoints))  
 
+## Demo
+![Subscan_Download_StakingRewardsHistory_Demo.gif](.demofile/Subscan_Download_StakingRewardsHistory_Demo.gif)
+
+### Notes  
+* The assumption is that the response data is different from the Value displayed on Subscan Exploler.
+* Not all accounts are applicable, but Value is displayed with the number of digits of the value adjusted.
+* In this code, the data is adjusted to Reward&Slash's transaction history (Download all data) by setting the section information in "config.ini", so please compare the data with it when checking.
+
 ## Usage
 ### 1. environment building
 1. Get project
@@ -112,12 +120,6 @@ Dash is running on http://127.0.0.1:8050/
 #### 10. Error handling
 * If there is a problem with the response data during response processing, an error dialog will appear; pressing the OK button will close the error dialog and access the Subscan API Documents page. If the Cancel button is pressed, the document page is not accessed and the error dialog is closed.
 * When the error dialog is closed, "Response Data Info" will show Error and Select Table Data will change to the default value.
-
-## Demo
-### Notes  
-* The assumption is that the response data is different from the Value displayed on Subscan Exploler.
-* Not all accounts are applicable, but Value is displayed with the number of digits of the value adjusted.
-* In this code, the data is adjusted to Reward&Slash's transaction history (Download all data) by setting the section information in "config.ini", so please compare the data with it when checking.
 
 ## Other Information
 ### Supported tokens and Subscan API information

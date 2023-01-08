@@ -168,4 +168,4 @@ def get_active_cell(active_cell,page_current):
     )
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run(debug=True)

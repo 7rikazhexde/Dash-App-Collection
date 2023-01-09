@@ -26,6 +26,8 @@ StakingRewards is obtained by specifying the following `Request URL` for each to
   (reference:[API Endpoints](https://support.subscan.io/#api-endpoints))  
 
 ## Demo
+The Reward&Slash data displayed in the following demo uses [address](https://polkadot.subscan.io/reward?address=1REAJ1k691g5Eqqg9gL7vvZCBG7FCCZ8zgQkZWd4va5ESih&role=account) listed in Docs as of January 5, 2023.
+
 ![Subscan_Download_StakingRewardsHistory_Demo.gif](.demofile/Subscan_Download_StakingRewardsHistory_Demo.gif)
 
 ### Notes  

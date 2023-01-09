@@ -39,8 +39,9 @@ This program uses the ```pyperclip``` module to copy the file name selected by `
 If the file is saved with the selected file name, paste it.
 
 ## Note
+* datasets are for csv files created directly under the repository.
+  Please understand that files stored in folders are not supported.
 * If you get an interpreter error using vscode, open and start dlPlotlyDataset with the folder designation.
 * Dataset information may differ from the latest information.   
 If the expected dataset does not exist, please add it. See the comments in ```plotly_datasets_info.py``` for details.
-* An error may occur when drawing the layout.  
-If you cannot start with the error, please reload your browser.
+* If an error occurs after launching the application and you cannot operate it, check the network settings and reload the browser.

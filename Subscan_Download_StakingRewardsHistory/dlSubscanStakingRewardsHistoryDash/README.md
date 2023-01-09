@@ -6,6 +6,15 @@ Save data in the following formats as csv files using Dash, Ploly, and Subscan A
 * Reward&Slash transaction history (Download all data)  
 * Cryptact custom files (Staking rewards) 
 
+### Supported tokens and Subscan API information
+StakingRewards is obtained by specifying the following `Request URL` for each token according to the [API Endpoint](https://support.subscan.io/#api-endpoints) specification.
+
+| Token | API         | Request URL     | module_id    | event_id | 
+| ----- | ----------- | --------------- | ------------ | -------- | 
+| DOT   | V2 API      | reward-slash-v2 | Staking      | Reward   | 
+| KSM   | V2 API      | reward-slash-v2 | Staking      | Reward   | 
+| ASTR  | Staking API | reward-slash    | dappsstaking | Reward   | 
+
 ### Notes
 * While I have confirmed that I can verify incoming data for a particular account, I don't guarantee that you will necessarily get the expected data.
 * Please note that I'm not responsible for any and all damages incurred by executing or referring to this code.
@@ -122,19 +131,11 @@ Dash is running on http://127.0.0.1:8050/
 * When the error dialog is closed, "Response Data Info" will show Error and Select Table Data will change to the default value.
 
 ## Other Information
-### Supported tokens and Subscan API information
-StakingRewards is obtained by specifying the following `Request URL` for each token according to the [API Endpoint](https://support.subscan.io/#api-endpoints) specification.
-
-| Token | API         | Request URL     | module_id    | event_id | 
-| ----- | ----------- | --------------- | ------------ | -------- | 
-| DOT   | V2 API      | reward-slash-v2 | Staking      | Reward   | 
-| KSM   | V2 API      | reward-slash-v2 | Staking      | Reward   | 
-| ASTR  | Staking API | reward-slash    | dappsstaking | Reward   | 
-
 ### Cryptact Custom File
 Data is created according to the specifications in [カスタムファイルの作成方法 / 2.10.ステーキングによる報酬].
-* The data for the Cryptact custom file consists of a header and line data. The headers are stored in ``[cryptact_info]'' in config.ini.
-Cryptact_custom_header``` value (list type) in config.ini. Row data is created from a list of variable values (`block_timestamp`,`amount`,`event_index`) and fixed values (`[cryptact_info]`).
+* The data for the Cryptact custom file consists of a header and line data. The headers are stored in `[cryptact_info]` in "config.ini".
+`Cryptact_custom_header` value (list type) in "config.ini". 
+* Row data is created from a list of variable values (`block_timestamp`,`amount`,`event_index`) and `fixed values` (`[cryptact_info]`).
 * `block_timestamp` is converted to local time with `fromtimestamp()` because it is UNIX time as it is.
 * Date and time information is converted to string by specifying the format to match the Cryptact specification.
-* Since ``amount`` does not match the actual reward amount as it is, adjust the decimal point adjustment value (```[subscan_api_info]``` ``display_digit_dot/ksw/astr``) set in "config.ini" using the number of significant digits (```[subscan_ api_info]```,```adjust_value_dot/ksw/astr```) using the number of significant digits (```[subscan_info]```).
+* Since `amount` does not match the actual reward amount as it is, adjust the decimal point adjustment value (`[subscan_api_info]` `display_digit_dot/ksw/astr`) set in `config.ini` using the number of significant digits (`[subscan_ api_info]`,`adjust_value_dot/ksw/astr`) using the number of significant digits (`[subscan_info]`).

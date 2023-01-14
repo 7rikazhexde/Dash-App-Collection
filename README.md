@@ -1,5 +1,5 @@
 # Dash-App-Collection
-Repository for managing apps and source code created in Dash plotly.
+This repository is used to manage information on apps created in Dash plotly.
 
 ## Programs
 For specifications and usage, please refer to README.md of each program.
